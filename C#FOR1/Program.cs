@@ -26,6 +26,22 @@
 
         }
 
+        public static int CompareMonthsExceedSum(double InitialDeposit, double LimitDeposit)
+        {
+            int mount = 0;
+            double currentDeposit = InitialDeposit;
+
+            while (currentDeposit <= LimitDeposit)
+            {
+                currentDeposit = currentDeposit + (currentDeposit * 0.02);
+                mount += 1;
+                //Console.WriteLine(currentDeposit);
+                //Console.WriteLine(mount);
+            }
+            return mount;
+
+        }
+
     }
 
     class Program
@@ -41,12 +57,11 @@
             Console.Write("Введите число C, где С это через сколько месяцев размер вклада превысит C руб. ");
             var LimitDeposit = double.Parse(Console.ReadLine());
 
-            var monthIncrease = Logic.CompareMonthWhenIncreaseExceeds(InitialDeposit, LimitIncomeDeposit);
+            // var monthIncrease = Logic.CompareMonthWhenIncreaseExceeds(InitialDeposit, LimitIncomeDeposit);
+            var monthsExceed = Logic.CompareMonthsExceedSum(InitialDeposit, LimitDeposit);
 
-            // var monthsExeceed = Logic.
-
-            Console.WriteLine(monthIncrease);
-            // 
+            //Console.WriteLine(monthIncrease);
+            Console.WriteLine(monthsExceed);
         }
     }
 }
