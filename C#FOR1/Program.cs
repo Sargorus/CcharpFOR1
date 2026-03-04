@@ -57,11 +57,11 @@
             Console.Write("Введите число C, где С это через сколько месяцев размер вклада превысит C руб. ");
             var LimitDeposit = double.Parse(Console.ReadLine());
 
-            // var monthIncrease = Logic.CompareMonthWhenIncreaseExceeds(InitialDeposit, LimitIncomeDeposit);
+            var monthIncrease = Logic.CompareMonthWhenIncreaseExceeds(InitialDeposit, LimitIncomeDeposit);
             var monthsExceed = Logic.CompareMonthsExceedSum(InitialDeposit, LimitDeposit);
 
-            //Console.WriteLine(monthIncrease);
-            Console.WriteLine(monthsExceed);
+            Console.WriteLine($"Ежемесячный процент дохода превысит {LimitIncomeDeposit}  через {monthIncrease} мес.");
+            Console.WriteLine($"Размер вклада превысит {LimitDeposit}  через {monthsExceed} мес.");
         }
     }
 }
