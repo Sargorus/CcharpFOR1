@@ -12,17 +12,53 @@ namespace C_FOR1.Tests
     public class LogicTests
     {
         [TestMethod()]
-        public void CompareMonthWhenIncreaseExceedsTest()
+        public void MonthWhenIncreaseExceedsDeposit100LimitIncome2()
         {
-            Assert.Fail();
+            var InitialDeposit = 100;
+            var LimitIncomeDeposit = 2;
+
+            var monthIncrease = Logic.CompareMonthWhenIncreaseExceeds(InitialDeposit, LimitIncomeDeposit);
+
+            Assert.AreEqual(2, monthIncrease);
+        }
+
+        [TestMethod()]
+        public void MonthWhenIncreaseExceedsDeposit123LimitIncomeDeposit123()
+        {
+            var InitialDeposit = 123;
+            var LimitIncomeDeposit = 123;
+
+            var monthIncrease = Logic.CompareMonthWhenIncreaseExceeds(InitialDeposit, LimitIncomeDeposit);
+
+            Assert.AreEqual(199, monthIncrease);
+
         }
 
 
+        [TestMethod()]
+        public void MonthsExceedSumWhenDepisit123Limit332p5 ()
+        {
+
+            var InitialDeposit = 123;
+            var LimitDeposit = 332.5;
+
+            var monthsExceed = Logic.CompareMonthsExceedSum(InitialDeposit, LimitDeposit);
+
+            Assert.AreEqual(51, monthsExceed);
+
+            Assert.Fail();
+        }
 
         [TestMethod()]
-        public void CompareMonthsExceedSumTest()
+        public void MonthsExceedSumWhenDepisit10400Limit2025000p()
         {
-            Assert.Fail();
+
+            var InitialDeposit = 10400;
+            var LimitDeposit = 205000;
+
+            var monthsExceed = Logic.CompareMonthsExceedSum(InitialDeposit, LimitDeposit);
+
+            Assert.AreEqual(151, monthsExceed);
         }
     }
 }
