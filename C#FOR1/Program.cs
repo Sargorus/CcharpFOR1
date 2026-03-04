@@ -2,20 +2,26 @@
 {
     public class Logic
     {
-        public static string CompareTrainInStation(int ArrivalHour, int ArrivalMinute, int DepartureHour, int DepartureMinute, int PassengerHour, int PassengerMinute)
+        public static int CompareMonthWhenIncreaseExceeds(double InitialDeposit, double LimitIncomeDeposit)
         {
-            int TimeArrive = ArrivalHour * 60 + ArrivalMinute;
-            int TimeDeparture = DepartureHour * 60 + DepartureMinute;
-            int TimePassenger = PassengerHour * 60 + PassengerMinute;
+            int mount = 1;
+            double currentDeposit = InitialDeposit;
 
-            if (TimeArrive >= TimeDeparture) return "Время прибытия позже времени отбытия или равно ему!";
-            if (TimePassenger < TimeDeparture && TimePassenger > TimeArrive)
+            while (true)
             {
-                return "Поезд находится на станции";
-            }
-            else
-            {
-                return "Поезд не находится на станции";
+                double IncomeDeposit = currentDeposit * 0.02;
+                if (IncomeDeposit > LimitIncomeDeposit)
+                {
+                    return mount;
+                }
+                else
+                {
+                    currentDeposit = currentDeposit + IncomeDeposit;
+                    mount += 1;
+                }
+                //Console.WriteLine(currentDeposit);
+                //Console.WriteLine(IncomeDeposit);
+                //Console.WriteLine(mount);
             }
 
         }
@@ -26,19 +32,20 @@
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите начальную сумму вклада:");
+            Console.Write("Введите начальную сумму вклада: ");
             var InitialDeposit = double.Parse(Console.ReadLine());
 
-            Console.Write("Введите число В. где число В это порог для ежемесячного увеличения вклада");
-            var LimitInterestAccruals = double.Parse(Console.ReadLine());
+            Console.Write("Введите число В. где число В это порог для ежемесячного увеличения вклада ");
+            var LimitIncomeDeposit = double.Parse(Console.ReadLine());
 
-            Console.Write("Введите число C, где С это через сколько месяцев размер вклада превысит C руб.");
+            Console.Write("Введите число C, где С это через сколько месяцев размер вклада превысит C руб. ");
             var LimitDeposit = double.Parse(Console.ReadLine());
 
-            // var monthIncrease = Logic.CompareTrainInStation(ArrivalHour, ArrivalMinute, DepartureHour, DepartureMinute, PassengerHour, PassengerMinute);
+            var monthIncrease = Logic.CompareMonthWhenIncreaseExceeds(InitialDeposit, LimitIncomeDeposit);
+
             // var monthsExeceed = Logic.
 
-            // Console.WriteLine(resultMSG);
+            Console.WriteLine(monthIncrease);
             // 
         }
     }
